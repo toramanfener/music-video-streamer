@@ -15,39 +15,39 @@ from config import (
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""✨ **Welcome [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**\n
-💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music and video on groups through the new Telegram's video chats!**
+        f"""✨ **Hoşgeldin [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**\n
+💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Bu bot güvenli ve sorunsuz şekilde gruplarınızda video ve müzik oynatmanız için yapılmıştır kılavuzu ve komutları okumanız bot hakkında bilgi sahibi olmanızı sağlar!**
 
-💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
+💡 **Bot komutları botun tüm özelliklerinden yararlanmanıza olanak tanır bunun için okumanız tavsiye edilir » 📚 Komutlar butonu!**
 
 
-🛠 [🕊.⋆𝙆𝙄𝙉𝙂༒۝꧂](https://t.me/cl_me_logesh) **if you have any problem contact**
+🛠 [Yapımcı](https://t.me/Dnztrmn) **Bot hakkında sorunlarınızı ve önerilerinizi iletebilirsiniz**
 
-❔ **To know how to use this bot, please click on the » ❓ Basic Guide button!**""",
+❔ **Temel kılavuz bot hakkında bilgi almanız ve kullanımı kolaylaştırmak için harika bir yoldur okumanız gerekir yaşıyabileceğiniz tüm sorunların çözümü burda mevcuttur» ❓ Temel Kılavuz!**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "➕ Gruba Ekle ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("❓ Temel Kılavuz", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
-                    InlineKeyboardButton("❤ owner", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("📚 Komutlar", callback_data="cbcmds"),
+                    InlineKeyboardButton("❤ Yapımcı", url=f"https://t.me/Dnztrmn"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥 Sohbet Grubu", url=f"https://t.me/Keyfialemsohbet"
                     ),
                     InlineKeyboardButton(
-                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "📣 Resmi Kanal", url=f"https://t.me/yalnzadmlr"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "🕊.⋆𝙆𝙄𝙉𝙂༒۝꧂", url="https://t.me/cl_me_logesh"
+                        "🕊Yapımcı", url="https://t.me/Dnztrmn"
                     )
                 ],
             ]
@@ -59,19 +59,19 @@ async def cbstart(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbhowtouse"))
 async def cbguides(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""❓ **Basic Guide for using this bot:**
+        f"""❓ **Bot hakkında temel kılavuz:**
 
-1.) **first, add me to your group.**
-2.) **then promote me as admin and give all permissions except anonymous admin.**
-3.) **add @{ASSISTANT_NAME} to your group or type /userbotjoin to invite her.**
-4.) **turn on the video chat first before start to play video.**
-5.) **all the command list you can see on » 📚 Commands button, find it on start home, tap the » Go Back button below.**
+1.) **İlk olarak beni bir gruba ekle.**
+2.) **Gerekli tüm izinleri ver (ban yetkisi grup bilgisi değiştirme hariç).**
+3.) **Grubuna @{ASSISTANT_NAME} /gel komutu ile asistanı ekle asistan gruba katılmazsa elle eklemen gerekebilir.**
+4.) **Sesli sohbeti başlat ve artık hazır sorunsuz şekilde kullanabilirsin kasma olduğu zaman komutu "/" yerine "." olarak başlat ve /reload komutu ile yenile.**
+5.) **Şimdi botta mevcut olan tüm komutları ögrenme zamanı » 📚 Komutlara ulaşmak için ana ekrana dönmeniz gerekiyor bunu   » Geri Dön butonuna tıklayarak gerçekleştirebilirsin**
 
-💡 **If you have a follow-up questions about this bot, you can tell it on my support chat here: @{GROUP_SUPPORT}**
+💡 **Sorunlarınız ve önerileriniz için sizi sohbet grubumuza bekleriz: @Keyfialemsohbet**
 
 ⚡ __Powered by {BOT_NAME} A.I__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="cbstart")]]
+            [[InlineKeyboardButton("🔙 Geri Dön", callback_data="cbstart")]]
         ),
     )
 
@@ -79,32 +79,29 @@ async def cbguides(_, query: CallbackQuery):
 @Client.on_callback_query(filters.regex("cbcmds"))
 async def cbhelps(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""📚 Here is the Commands list:
+        f"""📚 Komut listesi:
 
-» /play - play music on voice chat
-» /stream - enter the radio link
-» /vplay - play video on video chat
-» /vstream - for m3u8/live link
-» /playlist - show you the playlist
-» /video (query) - download video from youtube
-» /song (query) - download song from youtube
-» /lyric (query) - scrap the song lyric
-» /search (query) - search a youtube video link
-» /queue - show you the queue list (admin only)
-» /pause - pause the stream (admin only)
-» /resume - resume the stream (admin only)
-» /skip - switch to next stream (admin only)
-» /stop - stop the streaming (admin only)
-» /userbotjoin - invite the userbot to join chat (admin only)
-» /userbotleave - order userbot to leave from group (admin only)
-» /reload - update the admin list (admin only)
-» /rmw - clean raw files (sudo only)
-» /rmd - clean downloaded files (sudo only)
-» /leaveall - order userbot leave from all group (sudo only)
+» /oynat - sesli sohbette müzik oynatabilirsiniz
+» /yayın - Sesli sohbette radio yayını yapabilirsiniz
+» /izlet - Sesli sohbette video oynatabilirsiniz
+» /canlı - Sesli sohbette canlı yayın oynatabilirsiniz canlı yayın linkini komutun yanina yapıştırmanız yeterli
+» /liste - aktif oynatma listesini gösterir
+» /video (sorgu) - Youtubeden video indirebilirsiniz
+» /indir (sorgu) - Youtubeden müzik indirebilirsiniz
+» /sözler (sorgu) - Herhangi bir şarkının sözlerini getirir
+» /ara (sorgu) - İstediğiniz videonun yada şarkının linkini bulabilirsiniz
+» /sıra - sıra listesini gösterir (Yönetici kullanabilir)
+» /dur - Yayını durdurur (Yönetici Kullanabilir)
+» /devam - Yayına devam eder (Yönetici kullanabilir)
+» /gec - Geçerli parçaya atlar (Yönetici kullanabilir)
+» /bitir - Yayını bitirir  (Yönetici kullanabilir)
+» /gel - Asistanı gruba daveteder (Yönetici kullanabilir)
+» /defol - Asistanı gruptan çıkarır (Yönetoci kullanabilir)
+» /reload - Yönetici listesini günceller (Yönetici kullanabilir)
 
 ⚡ __Powered by {BOT_NAME} AI__""",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Go Back", callback_data="cbstart")]]
+            [[InlineKeyboardButton("🔙 Geri Dön", callback_data="cbstart")]]
         ),
     )
 
