@@ -35,7 +35,7 @@ async def join_chat(c: Client, m: Message):
         return await user.send_message(chat_id, "✅ Asistan zaaten sohbette")
 
 
-@Client.on_message(command(["cıkart",
+@Client.on_message(command(["defol",
                             f"cıkart@{BOT_USERNAME}"]) & filters.group & ~filters.edited
 )
 @authorized_users_only

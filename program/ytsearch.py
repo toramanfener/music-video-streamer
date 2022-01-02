@@ -16,14 +16,14 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-@Client.on_message(command(["search", f"search@{BOT_USERNAME}"]))
+@Client.on_message(command(["Ara", f"ara@{BOT_USERNAME}"]))
 async def ytsearch(_, message: Message):
 
     keyboard = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
-                    "🗑 Close", callback_data="cls",
+                    "🗑 Kapat", callback_data="cls",
                 )
             ]
         ]
@@ -39,10 +39,10 @@ async def ytsearch(_, message: Message):
         i = 0
         text = ""
         while i < 5:
-            text += f"🏷 **Name:** __{results[i]['title']}__\n"
-            text += f"⏱ **Duration:** `{results[i]['duration']}`\n"
-            text += f"👀 **Views:** `{results[i]['views']}`\n"
-            text += f"📣 **Channel:** {results[i]['channel']}\n"
+            text += f"🏷 **İsim:** __{results[i]['title']}__\n"
+            text += f"⏱ **Süre:** `{results[i]['duration']}`\n"
+            text += f"👀 **İzlenme:** `{results[i]['views']}`\n"
+            text += f"📣 **Kanal:** {results[i]['channel']}\n"
             text += f"🔗: https://www.youtube.com{results[i]['url_suffix']}\n\n"
             i += 1
         await m.edit(text, reply_markup=keyboard, disable_web_page_preview=True)

@@ -382,7 +382,7 @@ async def vstream(c: Client, m: Message):
         if len(m.command) == 2:
             link = m.text.split(None, 1)[1]
             Q = 720
-            loser = await c.send_message(chat_id, "🔄 **processing stream...**")
+            loser = await c.send_message(chat_id, "🔄 **Yayın başlatılıyor...**")
         elif len(m.command) == 3:
             op = m.text.split(None, 1)[1]
             link = op.split(None, 1)[0]
@@ -392,11 +392,11 @@ async def vstream(c: Client, m: Message):
             else:
                 Q = 720
                 await m.reply(
-                    "» __only 720, 480, 360 allowed__ \n💡 **now streaming video in 720p**"
+                    "» __bir tek 720, 480, 360 allowed__ \n💡 **aktif video yayın kalitesi 720p**"
                 )
-            loser = await c.send_message(chat_id, "🔄 **processing stream...**")
+            loser = await c.send_message(chat_id, "🔄 **yayın başlatılıyor...**")
         else:
-            await m.reply("**/vstream {link} {720/480/360}**")
+            await m.reply("**/canlı {link} {720/480/360}**")
 
         regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
         match = re.match(regex, link)
@@ -415,7 +415,7 @@ async def vstream(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {requester}\n💚**Any issues contact :**[🕊.⋆𝙆𝙄𝙉𝙂](https://t.me/cl_me_logesh)",
+                    caption=f"💡 **Oynatma listesine eklendi »** `{pos}`\n\n💭 **Chat:** `{chat_id}`\n🎧 **Talep eden:** {requester}\n💚**İletişim için :**[🕊.⋆Yapımcı](https://t.me/dnztrmn)",
                     reply_markup=keyboard,
                 )
             else:
@@ -426,7 +426,7 @@ async def vstream(c: Client, m: Message):
                 elif Q == 360:
                     amaze = LowQualityVideo()
                 try:
-                    await loser.edit("🔄 **Joining vc...**")
+                    await loser.edit("🔄 **Katılıyor...**")
                     await call_py.join_group_call(
                         chat_id,
                         AudioVideoPiped(
@@ -443,7 +443,7 @@ async def vstream(c: Client, m: Message):
                     )
                     await m.reply_photo(
                         photo=f"{IMG_2}",
-                        caption=f"💡 **[Video live]({link}) stream started.**\n\n💭 **Chat:** `{chat_id}`\n💡 **Status:** `Playing`\n🎧 **Request by:** {requester}\n💚**Any issues contact :** [🕊.⋆𝙆𝙄𝙉𝙂](https://t.me/cl_me_logesh)",
+                        caption=f"💡 **[Video live]({link}) Yayın başlatıldı.**\n\n💭 **Chat:** `{chat_id}`\n💡 **Durum:** `Oynuyor`\n🎧 **Talep eden:** {requester}\n💚**İletişim için :** [🕊.⋆Yapımcı](https://t.me/Dnztrmn)",
                         reply_markup=keyboard,
                     )
                 except Exception as ep:
