@@ -54,39 +54,39 @@ async def _human_time_duration(seconds):
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""✨ **Welcome {message.from_user.mention()} !**\n
-💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music and video on groups through the new Telegram's video chats!**
+💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) Bu bot güvenli ve sorunsuz şekilde gruplarınızda video ve müzik oynatmanız için yapılmıştır kılavuzu ve komutları okumanız bot hakkında bilgi sahibi olmanızı sağlar!**
 
-💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
+💡 **Bot komutları botun tüm özelliklerinden yararlanmanıza olanak tanır bunun için okumanız tavsiye edilir » 📚 Komutlar butonu!**
 
-🛠 [🕊.⋆𝙆𝙄𝙉𝙂༒۝꧂](https://t.me/cl_me_logesh) ** if you have any problems contact 💚**
+🛠 [🕊.⋆Yapımcı](https://t.me/Dnztrmn) ** Bot hakkında sorunlarınızı ve önerilerinizi iletebilirsiniz 💚**
 
-❔ **To know how to use this bot, please click on the » ❓ Basic Guide button!**""",
+❔ **Temel kılavuz bot hakkında bilgi almanız ve kullanımı kolaylaştırmak için harika bir yoldur okumanız gerekir yaşıyabileceğiniz tüm sorunların çözümü burda mevcuttur » ❓ Temel kılavuz!**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "➕ Gruba Ekle ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("🕊.⋆ Basic Guide༒۝꧂", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("🕊.⋆ Temel Kılavuz", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton("🕊.⋆Commands༒۝꧂", callback_data="cbcmds"),
-                    InlineKeyboardButton("🕊.⋆Owner༒۝꧂", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("🕊.⋆Komutlar", callback_data="cbcmds"),
+                    InlineKeyboardButton("🕊.⋆Yapımcı", url=f"https://t.me/Dnztrmn"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "🕊.⋆official Group༒۝꧂", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "🕊.⋆Sohbet Grubu", url=f"https://t.me/keyfialemsohbet"
                     ),
                     InlineKeyboardButton(
-                        "🕊.⋆official channel༒۝꧂", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "🕊.⋆Resmi Kanal", url=f"https://t.me/yalnzadmlr"
                     ),
                 ],
                 [
 
        
                     InlineKeyboardButton(
-                        "🕊.⋆source code༒۝꧂", url="https://github.com/LOGI-LAP/music-video-streamer"
+                        "🕊.⋆Destek Kanalı", url="https://t.me/Tubidybotdestek"
                     )
                 ],
             ]
@@ -106,15 +106,15 @@ async def alive(client: Client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("✨ Group", url=f"https://t.me/{GROUP_SUPPORT}"),
+                InlineKeyboardButton("✨ Grup", url=f"https://t.me/keyfialemsohber"),
                 InlineKeyboardButton(
-                    "📣 Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    "📣 Kanal", url=f"https://t.me/tubidybotdestek"
                 ),
             ]
         ]
     )
 
-    alive = f"**Hello {message.from_user.mention()}, i'm {BOT_NAME}**\n\n✨ Bot is working normally\n🍀 My Master: [{ALIVE_NAME}](https://t.me/{OWNER_NAME})\n✨ Bot Version: `v{__version__}`\n🍀 Pyrogram Version: `{pyrover}`\n✨ Python Version: `{__python_version__}`\n🍀 PyTgCalls version: `{pytover}`\n🍀 Uptime Status: `{uptime}`\n\n**Thanks for Adding me here, for playing video & music on your Group video chat** ❤"
+    alive = f"**Merhaba {message.from_user.mention()}, i'm {BOT_NAME}**\n\n✨ Bot normal çalışıyor\n🍀 Yapımcı: [{ALIVE_NAME}](https://t.me/dnztrmn)\n✨ Bot Versiyon: `v{__version__}`\n🍀 Program versiyon: `{pyrover}`\n✨ Python Versiyon: `{__python_version__}`\n🍀 PyTgCalls versiyon: `{pytover}`\n🍀 Çalışma süresi: `{uptime}`\n\n**Beni gruba eklediğin için teşekkür ederim arkadaşlarınla keyifli sohbet geçirmen dileğiyle** ❤"
 
     await message.reply_photo(
         photo=f"{ALIVE_IMG}",
@@ -128,7 +128,7 @@ async def ping_pong(client: Client, message: Message):
     start = time()
     m_reply = await message.reply_text("pinging...")
     delta_ping = time() - start
-    await m_reply.edit_text("🏓 `PONG!!`\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
+    await m_reply.edit_text("🏓 `PİNG!!`\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
 
 
 @Client.on_message(command(["uptime", f"uptime@{BOT_USERNAME}"]) & ~filters.edited)
@@ -138,7 +138,7 @@ async def get_uptime(client: Client, message: Message):
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
     await message.reply_text(
-        "🤖 bot status:\n"
+        "🤖 bot durumu:\n"
         f"• **uptime:** `{uptime}`\n"
         f"• **start time:** `{START_TIME_ISO}`"
     )
